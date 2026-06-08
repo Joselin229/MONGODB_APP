@@ -1,145 +1,118 @@
 # Vehicle Inventory Management System
 
-This is a simple full-stack vehicle inventory app made for the Advanced Database Systems assignment. It lets a user add, view, update, and delete vehicle records.
+A full-stack vehicle inventory management app built with Node.js, Express, MongoDB Atlas, Mongoose and React. The application allows a user to create, view, update, and delete vehicle records through a simple web interface.
 
-## Links
+## Live Application
 
-Live app:
+Deployed application:
 
 https://mongodb-app-akr8.onrender.com/
 
-GitHub repo:
+## GitHub Repository
 
 https://github.com/Joselin229/MONGODB_APP
 
-## Main Features
+## Features
 
-- Add vehicle records
-- View all vehicle records
+- Add new vehicle records
+- View all vehicles in the inventory
 - Edit existing vehicle records
 - Delete vehicle records
-- Store the data in MongoDB Atlas
+- Store data in MongoDB Atlas
 
-## Technologies Used
+## Technology Stack
+
+### Backend
 
 - Node.js
-- Express
+- Express.js
 - MongoDB Atlas
 - Mongoose
+- CORS
+- dotenv
+
+### Frontend
+
 - React
 - Vite
 - Plain CSS
-- Render for deployment
 
-## Project Structure
+### Deployment
 
-```text
-MONGODB_APP
-|-- Backend
-|   |-- config.js
-|   |-- index.js
-|   |-- models
-|   |   `-- vehicleModel.js
-|   |-- routes
-|   |   `-- vehiclesRoute.js
-|   `-- frontend
-|       `-- src
-|           `-- App.jsx
-`-- README.md
-```
+- Render
+- MongoDB Atlas cloud database
+
+
+## Database Model
+
+
+Each vehicle contains:
+
+- `vehicleType` - Car, Motorbike, or Van
+- `manufacturer` - vehicle manufacturer
+- `model` - vehicle model
+- `releaseYear` - year of release
+- `price` - vehicle price
+- `milleage` - vehicle mileage
+- `createdAt` and `updatedAt` timestamps
+
 
 ## Environment Variables
 
-Create a `.env` file inside the `Backend` folder.
+Create a `.env` file inside the `Backend` folder for local development:
 
-Example:
-
-```env
-PORT=5555
+PORT= your_port_of_choice
 MONGODB_URL=your_mongodb_atlas_connection_string
-```
 
-The `.env` file is not uploaded to GitHub because it contains the MongoDB connection string.
 
-## How To Run Locally
+The `.env` file should not be committed to GitHub.
 
-Important: run the project from the `Backend` folder.
+## Running The Project Locally
 
-Clone the repo:
+Clone the repository:
 
-```bash
 git clone https://github.com/Joselin229/MONGODB_APP.git
-```
 
-Go into the backend folder:
+After cloning, go into the Backend folder before running any npm commands:
 
-```bash
 cd MONGODB_APP/Backend
-```
 
 Install backend dependencies:
 
-```bash
-npm install
-```
+
+npm i
 
 Install frontend dependencies:
 
-```bash
 npm --prefix frontend install
-```
 
-Create the `.env` file in the `Backend` folder and add the MongoDB connection string.
+Create the `.env` file in the `Backend` folder and add the required environment variables.
 
-Run the app:
+Run the project:
 
-```bash
+
 npm run dev
-```
 
-Open:
+Open the application:
 
-```text
-http://localhost:5555
-```
+http://localhost:your_port_of_choice
 
-## Production / Deployment
+## Production Build
 
-The app is deployed on Render as one web service. The backend serves both the API and the built React frontend.
+The backend serves the built React frontend from `Backend/frontend/dist`.
 
-Render settings used:
+Build the frontend:
 
-```text
-Root Directory: Backend
-Build Command: npm install && npm --prefix frontend install && npm --prefix frontend run build
-Start Command: npm start
-```
+npm --prefix frontend run build
 
-Render environment variable:
+Start the backend:
 
-```text
-MONGODB_URL=your_mongodb_atlas_connection_string
-```
+npm start
 
-## API Routes
 
-Base route:
+## Security Notes
 
-```text
-/vehicles
-```
-
-| Method | Route | Purpose |
-| --- | --- | --- |
-| GET | `/vehicles` | Get all vehicles |
-| GET | `/vehicles/:id` | Get one vehicle |
-| POST | `/vehicles` | Add a vehicle |
-| PUT | `/vehicles/:id` | Update a vehicle |
-| DELETE | `/vehicles/:id` | Delete a vehicle |
-
-## Notes
-
-- MongoDB Atlas is used as the database.
-- The project uses one main collection for vehicle records.
-- The schema field for mileage is currently spelled `milleage` in the code.
-- The free Render service may take a few seconds to wake up after inactivity.
+- The MongoDB connection string is stored in environment variables.
+- `.env` is ignored by Git and should not be uploaded.
+- The database is hosted on MongoDB Atlas.
+- CORS is enabled so the frontend can communicate with the backend.
